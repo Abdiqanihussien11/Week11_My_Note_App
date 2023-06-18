@@ -2,42 +2,28 @@ import React from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
 function Notes(props) {
-  // console.log(props);
   return (
-    
-    <div className="flex flex-wrap justify-center text-center">
-
-      <div className="flex flex-1  h-100 w-100 mt-4 space-x-5">
-        <div className="bg-yellow-300 w-40 h-40">
-      <h2 className="text-2xl text-black font-bold"> Do Grocery</h2>
-      <p className="text-black font-sans pt-7">Buy products To Clean House.</p>
-      <hr />
-      <div className="flex flex-row px-3 mx-4 ">
-      <img src="/img/refresh.png" className="w-7 h-7 mr-6 mt-4"/>
-      <img src="/img/delete.png" className="w-7 h-7 mt-4" />
+    <div className="flex flex-wrap justify-center mt-5">
+      {props.notes.map((note) => (
+        <div
+          className="relative bg-red-400 w-64 h-64 m-5 shadow-2xl overflow-hidden"
+          key={note.id}
+        >
+          <div className="p-5">
+            <h3 className="font-bold text-2xl mb-4">{note.title}</h3>
+            <p>{note.content}</p>
+          </div>
+          <div className="absolute bg-red-400 w-12 h-12 rotate-45 -top-6 -left-6" />
+          <div className="absolute bottom-0 left-0 right-0 flex justify-center p-4">
+            <button className="mr-2">
+              <FaEdit size={20} onClick={() => props.handleEdit(note.id, note)} />
+            </button>
+            <button>
+              <FaTrash size={20} onClick={() => props.deleteNote(note.id)} />
+            </button>
+          </div>
         </div>
-        </div>
-        <div className="bg-yellow-300 w-40 h-40">
-        <h2 className="text-2xl text-black font-bold"> Do Grocery</h2>
-      <p className="text-black font-sans pt-7">Buy products To Clean House.</p>
-      <hr />
-      <div className="flex flex-row px-3 mx-4 ">
-      <img src="/img/refresh.png" className="w-7 h-7 mr-6 mt-4"/>
-      <img src="/img/delete.png" className="w-7 h-7 mt-4" />
-        </div>
-        </div>
-        <div className="bg-yellow-300 w-40 h-40">
-        <h2 className="text-2xl text-black font-bold"> Do Grocery</h2>
-      <p className="text-black font-sans pt-7">Buy products To Clean House.</p>
-      <hr />
-      <div className="flex flex-row px-3 mx-4 ">
-      <img src="/img/refresh.png" className="w-7 h-7 mr-6 mt-4"/>
-      <img src="/img/delete.png" className="w-7 h-7 mt-4" />
-        </div>
-        </div>
-      </div>
-      
-
+      ))}
     </div>
   );
 }

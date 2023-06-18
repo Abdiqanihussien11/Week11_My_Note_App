@@ -2,10 +2,10 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const AddNote = (props) => {
+const EditNote = (props) => {
   const initialValues = {
-    title: '',
-    content: '',
+    title: props.initialValues.title,
+    content: props.initialValues.content,
   };
 
   const validationSchema = Yup.object({
@@ -15,17 +15,13 @@ const AddNote = (props) => {
 
   const handleSubmit = (values, { resetForm }) => {
     console.log('Sending data:', values);
- 
-      props.createNote({
-        title: values.title,
-        content: values.content,
-      });
+    props.editNote(values);
 
     resetForm();
   };
 
   return (
-    <div className="bg-blue-100 p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
+    <div className="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -55,9 +51,9 @@ const AddNote = (props) => {
 
           <button
             type="submit"
-            className="block w-full bg-red-400 text-black font-bold p-4 rounded-lg hover:bg-red-500"
+            className="block w-full bg-yellow-400 text-black font-bold p-4 rounded-lg hover:bg-yellow-500"
           >
-            Add Note
+            Update Note
           </button>
         </Form>
       </Formik>
@@ -65,4 +61,4 @@ const AddNote = (props) => {
   );
 };
 
-export default AddNote;
+export default EditNote;

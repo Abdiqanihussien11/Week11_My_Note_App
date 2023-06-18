@@ -1,6 +1,6 @@
-# WEEK 11: My Note App
+# WEEK 12: My Note App - Redux Toolkit
 
-This Project allows you to practice the concepts and techniques learned last Sunday and apply them in a concrete project. This assignment explored React advanced form creation and styling with Tailwind CSS. In your Project for this assignment, you will demonstrate proficiency by creating a Single Page Application that performs CRUD (Create, Read, Update, Delete) operations on a locally hosted API server.
+This Project allows you to practice the concepts and techniques learned last Sunday and apply them in a concrete project. This assignment explored React advanced state management with Redux Toolkit. In your Project for this assignment, you will demonstrate proficiency by creating a Single Page Application that performs CRUD (Create, Read, Update, Delete) operations on a locally hosted API server.
 
 ## Instructions
 
@@ -31,31 +31,17 @@ Follow these steps for completing your project:
 - [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
 - [ ] Submit your assignment at the student portal.
 
-
 ## Minimum Viable Product
 
-The MVP of this assignment will be broken up between 2 stages.
+Remove all props from components and use `useSelector` and `useDispatch` to get data from Redux store.
 
-### Stage 1
-
-Style your application using Tailwind CSS!
-
-- [ ] Make sure all components are showing properly
-- [ ] Use Tailwind CSS to style and make your application look like [this image](/screencapture.png)
-- [ ] You can reference the [Tailwind CSS Website](https://tailwindcss.com) for help.
-
-### Stage 1
-
-Examine all the components we created for you, you will not need to create more components unless you want to do Stretch.
-
-- [ ] Construct an AXIOS request to retrieve an array all the notes in the Notes DB simply write a `GET` to the endpoint `/notes`.
-- [ ] Display those notes in a list on the screen (You will not have any notes to start).
-- [ ] Setup the `Notes` component to display all the notes.
-- [ ] Setup the `AddNote` component to add new notes to the list, make sure to use `Formik` to control your form.
-- [ ] Construct an AXIOS request to `POST` to add a Note to the Note DB, you will need to send `title` and `content` to create a new note.
-- [ ] Display all notes underneath the `AddNote` component
-- [ ] Make sure the note is displayed when it's created.
-- [ ] Implement a method to delete a note.
+- [ ] Create a directory called `store` under src, add `index.js`
+- [ ] Create another directory under store called `api` and add `NoteSlice.js`, implement your reducer/actions logic here.  
+- [ ] In `Notes` component to display all the notes from `useSelector`
+- [ ] Change all props in `AddNote` component and use `useDispatch` to make call to `NoteSlice`.
+- [ ] Do the same for `EditNote`.
+- [ ] Make sure to redirect the user after editing or adding a note using `useNavigation` hook.
+- [ ] Make sure to implement the logic to delete notes.
 
 - Example:
 
@@ -72,7 +58,4 @@ Examine all the components we created for you, you will not need to create more 
 
 ## STRETCH PROBLEMS
 
-- [ ] Look at `App.js` and find the Stretch section. You will need to create a method to update each note.
-- [ ] Change the color of the note being edited.
-- [ ] Use [React Toast Library](https://react-hot-toast.com/) to show notifications such as "You have successfully deleted the note!"
-- [ ] **ADVANCED** Implement authentication by modifying the server, `login` and `signup`, show notes only to the logged in user and only their notes.
+- [ ] **ADVANCED** Use RTK Query instead of Redux Toolkit!
